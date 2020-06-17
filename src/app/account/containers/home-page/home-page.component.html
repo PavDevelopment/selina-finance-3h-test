@@ -2,13 +2,13 @@
   <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px grid" fxFlexFill>
     <div fxFlex="30" fxLayoutAlign="center start">
       <ng-container *ngIf="merchantsResponse$ | async | isSuccess">
-        <app-merchant-selection [merchants]="merchants"></app-merchant-selection>
+        <app-merchant-selection [merchants]="merchantsResponse$ | async | successValue"></app-merchant-selection>
       </ng-container>
     </div>
     <div fxFlex="70" fxLayout="column" fxLayoutAlign="center center">
       <ng-container *ngIf="merchantTransactionsResponse$ | async | isSuccess">
         <app-transactions-header></app-transactions-header>
-        <app-transactions-table [merchantTransactions]="merchantTransactions"></app-transactions-table>
+        <app-transactions-table [merchantTransactions]="merchantTransactionsResponse$ | async | successValue "></app-transactions-table>
       </ng-container>
     </div>
   </div>
