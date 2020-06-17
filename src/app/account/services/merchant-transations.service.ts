@@ -20,6 +20,7 @@ export class MerchantTransationsService {
   }
 
   getMerchantTransactions(merchantId: string): Observable<MerchantTransaction> {
+    merchantId = merchantId + '.json';
     return this.http.get(`${this.apiRootUrl}${merchantId}`).pipe(map((response: MerchantTransaction) => response));
   }
 

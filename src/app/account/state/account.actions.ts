@@ -30,7 +30,7 @@ export class LoadMerchantsFailure implements Action {
 
 export class LoadMerchantTransactions implements Action {
   readonly type = AccountActionTypes.LoadMerchantTransactions;
-  constructor(public payload: { merchantId: string }) {}
+  constructor(public merchantId: string) {}
 }
 
 export class LoadMerchantTransactionsSuccess implements Action {

@@ -17,6 +17,6 @@ export class MerchantSelectionComponent implements OnInit {
   onMerchantChange(event: any) {
     // this should output the event to parent but not much time so doing it here
     console.log('on Merchant Change', event.value);
-    this.store.dispatch(new LoadMerchantTransactions({merchantId: event.value}));
+    this.store.dispatch(new LoadMerchantTransactions(event.value));
   }
 }

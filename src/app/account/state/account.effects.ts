@@ -38,8 +38,8 @@ export class AccountEffects {
   @Effect()
   loadMerchantTransactions$: Observable<Action> = this.actions$.pipe(
     ofType<accountActions.LoadMerchantTransactions>(accountActions.AccountActionTypes.LoadMerchantTransactions),
-    switchMap((action) => {
-      return this.merchantTransationsService.getMerchantTransactions(action.payload.merchantId).pipe(
+    switchMap((action: any) => {
+      return this.merchantTransationsService.getMerchantTransactions(action.payload).pipe(
         map((merchantTransactions) => new accountActions.LoadMerchantTransactionsSuccess({ merchantTransactions })),
         catchError((error) => of(new accountActions.LoadMerchantTransactionsFailure(error)))
       );
