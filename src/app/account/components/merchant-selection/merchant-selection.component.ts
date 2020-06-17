@@ -1,12 +1,13 @@
-import { LoadMerchantTransactions } from './../../state/account.actions';
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Merchant } from '../../models/merchant';
+import { LoadMerchantTransactions } from './../../state/account.actions';
 
 @Component({
   selector: 'app-merchant-selection',
   templateUrl: './merchant-selection.component.html',
   styleUrls: ['./merchant-selection.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MerchantSelectionComponent implements OnInit {
   @Input() merchants: Array<Merchant> = null;
