@@ -52,7 +52,7 @@ describe('MerchantTransationsService', () => {
       const transaction: Transaction = generateRandomTransaction();
 
       pricing.subsidy = 10;
-      pricing.discount_cutoff = 5;
+      pricing.discount_subsidy = 5;
       pricing.discount_cutoff = 1000;
       transaction.price = 500;
 
