@@ -1,15 +1,13 @@
-<!-- <mat-list role="list" *ngFor="let merchant of merchants" >
-    <mat-list-item role="listitem">{{merchant.name}}</mat-list-item>
-    <mat-divider></mat-divider>
-</mat-list> -->
-
-
-<h4>Select Merchant</h4>
-<mat-form-field>
+<mat-form-field style="padding: 10px;">
   <mat-label>Merchant Selected</mat-label>
-  <mat-select (selectionChange)="onMerchantChange($event)">
+  <mat-select (selectionChange)="onMerchantDropdownChange($event)">
     <mat-option *ngFor="let merchant of merchants" [value]="merchant.merchant_id">
       {{merchant.name}}
     </mat-option>
   </mat-select>
 </mat-form-field>
+
+<mat-list role="list" *ngFor="let merchant of merchants">
+  <mat-list-item role="listitem" (click)="onMerchantClick(merchant.merchant_id)">{{merchant.name}}</mat-list-item>
+  <mat-divider></mat-divider>
+</mat-list>

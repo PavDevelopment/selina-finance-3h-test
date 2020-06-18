@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { MerchantTransaction, Transaction } from './../../models/merchantTransaction';
+import { MerchantTransaction, Transaction, MerchantTransactionViewModel } from './../../models/merchantTransaction';
 
 @Component({
   selector: 'app-transactions-table',
@@ -8,7 +8,7 @@ import { MerchantTransaction, Transaction } from './../../models/merchantTransac
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransactionsTableComponent implements OnInit {
-  @Input() merchantTransactions: MerchantTransaction = null;
+  @Input() merchantTransactions: MerchantTransactionViewModel = null;
   displayedColumns: string[] = ['description', 'date', 'price', 'subsidy'];
   dataSource: Array<Transaction> = null;
   constructor() {}

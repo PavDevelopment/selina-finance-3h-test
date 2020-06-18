@@ -1,12 +1,12 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Failure, InProgress, NotAsked, RemoteData, Success } from 'ngx-remotedata';
 import { Merchant } from '../models/merchant';
-import { MerchantTransaction } from './../models/merchantTransaction';
+import { MerchantTransactionViewModel } from './../models/merchantTransaction';
 import { AccountActions, AccountActionTypes } from './account.actions';
 
 export interface AccountState extends EntityState<Merchant> {
   merchants: RemoteData<Merchant[], Error>;
-  merchantTransactions: RemoteData<MerchantTransaction, Error>;
+  merchantTransactions: RemoteData<MerchantTransactionViewModel, Error>;
   selectedMerchantId: string;
 }
 
@@ -20,7 +20,7 @@ export const initialAccountState: AccountState = adapter.getInitialState({
   selectedMerchantId: null,
 });
 
-export function reducer(state = initialAccountState, action: AccountActions): AccountState {
+export function accountReducer(state = initialAccountState, action: AccountActions): AccountState {
   switch (action.type) {
     case AccountActionTypes.LoadMerchants:
       return {
@@ -31,7 +31,7 @@ export function reducer(state = initialAccountState, action: AccountActions): Ac
     case AccountActionTypes.LoadMerchantsFailure:
       return {
         ...state,
-        merchants: Failure.of(action.payload.error),
+        merchants: Failure.of(action.payload),
       };
 
     case AccountActionTypes.LoadMerchantsSuccess:
@@ -49,7 +49,7 @@ export function reducer(state = initialAccountState, action: AccountActions): Ac
     case AccountActionTypes.LoadMerchantTransactionsFailure:
       return {
         ...state,
-        merchantTransactions: Failure.of(action.payload.error),
+        merchantTransactions: Failure.of(action.payload),
       };
 
     case AccountActionTypes.LoadMerchantTransactionsSuccess:

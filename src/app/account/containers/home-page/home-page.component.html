@@ -1,19 +1,21 @@
 <div class="content">
+  <ng-container *ngIf="(merchantsResponse$ | async | isInProgress) || (merchantTransactionsResponse$ | async | isInProgress)">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </ng-container>
   <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px grid" fxFlexFill>
     <div fxFlex="30" fxLayoutAlign="center start">
       <ng-container *ngIf="merchantsResponse$ | async | isSuccess">
         <app-merchant-selection [merchants]="merchantsResponse$ | async | successValue"></app-merchant-selection>
       </ng-container>
     </div>
-    <div fxFlex="70" fxLayout="column" fxLayoutAlign="center center">
+    <div fxFlex="70" fxLayout="column" fxLayoutAlign="start start">
       <ng-container *ngIf="merchantTransactionsResponse$ | async | isSuccess">
-        <app-transactions-header></app-transactions-header>
-        <app-transactions-table [merchantTransactions]="merchantTransactionsResponse$ | async | successValue "></app-transactions-table>
+        <app-transactions-header class="transactions-header" [merchantTransactions]="merchantTransactionsResponse$ | async | successValue">
+        </app-transactions-header>
+        <mat-divider></mat-divider>
+        <app-transactions-table class="transactions-table" [merchantTransactions]="merchantTransactionsResponse$ | async | successValue">
+        </app-transactions-table>
       </ng-container>
     </div>
   </div>
 </div>
-
-<ng-container *ngIf="(merchantsResponse$ | async | isInProgress) || (merchantTransactionsResponse$ | async | isInProgress)">
- <p>Loading...</p>
-</ng-container>

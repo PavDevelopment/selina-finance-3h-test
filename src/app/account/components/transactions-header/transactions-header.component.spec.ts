@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TransactionsHeaderComponent } from './transactions-header.component';
 
-describe('TransactionsHeaderComponent', () => {
+xdescribe('TransactionsHeaderComponent', () => {
   let component: TransactionsHeaderComponent;
   let fixture: ComponentFixture<TransactionsHeaderComponent>;
 

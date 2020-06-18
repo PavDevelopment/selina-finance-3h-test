@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-account',
@@ -7,12 +6,7 @@ import { Store } from '@ngrx/store';
   styleUrls: ['./account.component.scss'],
 })
 export class AccountComponent implements OnInit {
-  public emailAddress: string;
-  constructor(private store: Store<any>) {}
+  constructor() {}
 
-  ngOnInit() {
-    console.log('loaded account component');
-  }
-
-  logout() {}
+  ngOnInit() {}
 }

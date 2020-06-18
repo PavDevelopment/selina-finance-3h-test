@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { ChartsModule } from 'ng2-charts';
 import { RemoteDataModule } from 'ngx-remotedata';
 import { AngularMaterialUIModule } from '../shared/ng-material-ui/ng-material.module';
 import { AccountRoutingModule } from './account-routing.module';
@@ -15,7 +15,7 @@ import { TransactionsTableComponent } from './components/transactions-table/tran
 import { HomePageComponent } from './containers/home-page/home-page.component';
 import { MerchantTransationsService } from './services/merchant-transations.service';
 import { AccountEffects } from './state/account.effects';
-import { reducer } from './state/account.reducer';
+import { accountReducer } from './state/account.reducer';
 
 @NgModule({
   declarations: [AccountComponent, HomePageComponent, MerchantSelectionComponent, TransactionsHeaderComponent, TransactionsTableComponent],
@@ -24,7 +24,8 @@ import { reducer } from './state/account.reducer';
     FlexLayoutModule,
     AngularMaterialUIModule,
     AccountRoutingModule,
-    StoreModule.forFeature('account', reducer),
+    ChartsModule,
+    StoreModule.forFeature('account', accountReducer),
     EffectsModule.forFeature([AccountEffects]),
     RemoteDataModule,
   ],

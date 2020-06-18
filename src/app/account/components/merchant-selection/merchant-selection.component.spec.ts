@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MerchantSelectionComponent } from './merchant-selection.component';
 
-describe('MerchantSelectionComponent', () => {
+xdescribe('MerchantSelectionComponent', () => {
   let component: MerchantSelectionComponent;
   let fixture: ComponentFixture<MerchantSelectionComponent>;
 

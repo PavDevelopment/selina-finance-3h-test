@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Merchant } from '../models/merchant';
-import { MerchantTransaction } from './../models/merchantTransaction';
+import { MerchantTransactionViewModel } from './../models/merchantTransaction';
 
 export enum AccountActionTypes {
   LoadMerchants = '[Account] Load Merchants',
@@ -25,7 +25,7 @@ export class LoadMerchantsSuccess implements Action {
 
 export class LoadMerchantsFailure implements Action {
   readonly type = AccountActionTypes.LoadMerchantsFailure;
-  constructor(public payload: { error: any }) {}
+  constructor(public payload: Error) {}
 }
 
 export class LoadMerchantTransactions implements Action {
@@ -35,12 +35,12 @@ export class LoadMerchantTransactions implements Action {
 
 export class LoadMerchantTransactionsSuccess implements Action {
   readonly type = AccountActionTypes.LoadMerchantTransactionsSuccess;
-  constructor(public payload: { merchantTransactions: MerchantTransaction }) {}
+  constructor(public payload: { merchantTransactions: MerchantTransactionViewModel }) {}
 }
 
 export class LoadMerchantTransactionsFailure implements Action {
   readonly type = AccountActionTypes.LoadMerchantTransactionsFailure;
-  constructor(public payload: { error: any }) {}
+  constructor(public payload: Error) {}
 }
 
 export class SelectTransactionsForMerchant implements Action {

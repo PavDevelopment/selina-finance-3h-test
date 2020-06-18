@@ -15,7 +15,11 @@ export class MerchantSelectionComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onMerchantChange(event: any) {
+  onMerchantDropdownChange(event: any) {
     this.store.dispatch(new LoadMerchantTransactions(event.value));
+  }
+
+  onMerchantClick(merchantId) {
+    this.store.dispatch(new LoadMerchantTransactions(merchantId));
   }
 }
